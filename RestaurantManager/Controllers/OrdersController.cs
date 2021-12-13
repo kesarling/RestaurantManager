@@ -45,9 +45,9 @@ namespace OrdersManager.Controllers
 		}
 
 		[HttpPatch("Edit")]
-		public async Task Edit(Guid orderId, OrderAddOrUpdate model)
+		public async Task Edit(OrderAddOrUpdate model)
 		{
-			var orderToUpdate = await repository.GetOrderAsync(orderId);
+			var orderToUpdate = await repository.GetOrderAsync(model.OrderId);
 			orderToUpdate.Total = model.Total;
 			orderToUpdate.TotalTax = model.TotalTax;
 			await repository.EditAsync(orderToUpdate);

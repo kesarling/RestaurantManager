@@ -9,11 +9,11 @@ namespace OrderDetailsManager.Data
 	{
 		public Guid OrderDetailsId { get; set; }
 
-		public Order Order { get; set; }
+		public Guid OrderId { get; set; }
 
-		public Item Item { get; set; }
+		public Guid ItemId { get; set; }
 
-		public Customer Customer { get; set; }
+		public Guid CustomerId { get; set; }
 
 		public string Description { get; set; }
 
