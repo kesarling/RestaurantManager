@@ -4,7 +4,7 @@ namespace CustomersManager.Data
 {
 	public class CustomerSearch
 	{
-		public Guid CustomerId { get; set; } = Guid.NewGuid();
+		public Guid CustomerId { get; set; }
 
 		public string Name { get; set; }
 

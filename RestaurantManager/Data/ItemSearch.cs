@@ -4,7 +4,7 @@ namespace ItemsManager.Data
 {
 	public class ItemSearch
 	{
-		public Guid ItemId { get; set; } = Guid.NewGuid();
+		public Guid ItemId { get; set; }
 
 		public string Name { get; set; }
 

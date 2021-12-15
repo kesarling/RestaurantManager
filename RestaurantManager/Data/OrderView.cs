@@ -2,13 +2,13 @@
 
 namespace OrdersManager.Data
 {
-	public class OrderAddOrUpdate
+	public class OrderView
 	{
-		public Guid OrderId { get; set; }
+		public int OrderNumber { get; set; }
 
 		public decimal Total { get; set; }
 
-		public decimal TotalTax { get; set; }
+		public decimal Tax { get; set; }
 
 		public Status Status { get; set; }
 	}

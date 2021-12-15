@@ -25,6 +25,19 @@ namespace OrdersManager.Controllers
 			return await repository.AllOrdersAsync();
 		}
 
+		[HttpPost("/Order")]
+		public async Task<OrderView> GetOrder(OrderSearch model)
+		{
+			var order = await repository.GetOrderAsync(model.OrderId);
+			return new OrderView
+			{
+				OrderNumber = order.OrderNumber,
+				Tax = order.TotalTax,
+				Total = order.Total,
+				Status = order.Status,
+			};
+		}
+
 		[HttpPost("Add")]
 		public async Task Add(OrderAddOrUpdate model)
 		{
@@ -32,6 +45,7 @@ namespace OrdersManager.Controllers
 			{
 				Total = model.Total,
 				TotalTax = model.TotalTax,
+				Status = Status.pending,
 			});
 			await repository.SaveChangesAsync();
 		}

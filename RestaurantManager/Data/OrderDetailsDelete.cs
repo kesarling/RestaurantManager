@@ -7,7 +7,7 @@ namespace OrderDetailsManager.Data
 {
 	public class OrderDetailsDelete
 	{
-		public Guid OrderDetailsId { get; set; } = Guid.NewGuid();
+		public Guid OrderDetailsId { get; set; }
 
 		public Order Order { get; set; }
 

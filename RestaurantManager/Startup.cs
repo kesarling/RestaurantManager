@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RestaurantManager.Data;
 using RestaurantManager.Services;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Serialization;
 
 namespace RestaurantManager
 {
@@ -22,7 +24,6 @@ namespace RestaurantManager
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-
 			services.AddControllers();
 
 			services.AddDbContext<RestaurantContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MSSQL")));
