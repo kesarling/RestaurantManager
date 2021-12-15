@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OrdersManager.Data;
 using OrdersManager.Models;
 using RestaurantManager.Services;
 using System;
@@ -25,45 +24,38 @@ namespace OrdersManager.Controllers
 			return await repository.AllOrdersAsync();
 		}
 
-		[HttpPost("/Order")]
-		public async Task<OrderView> GetOrder(OrderSearch model)
+		[HttpGet("/Order/{orderId}")]
+		public async Task<Order> GetOrder(Guid orderId)
 		{
-			var order = await repository.GetOrderAsync(model.OrderId);
-			return new OrderView
-			{
-				OrderNumber = order.OrderNumber,
-				Tax = order.TotalTax,
-				Total = order.Total,
-				Status = order.Status,
-			};
+			return await repository.GetOrderAsync(orderId);
 		}
 
 		[HttpPost("Add")]
-		public async Task Add(OrderAddOrUpdate model)
+		public async Task Add(decimal total, decimal totalTax)
 		{
 			await repository.AddAsync(new Order
 			{
-				Total = model.Total,
-				TotalTax = model.TotalTax,
+				Total = total,
+				TotalTax = totalTax,
 				Status = Status.pending,
 			});
 			await repository.SaveChangesAsync();
 		}
 
-		[HttpDelete("Delete")]
-		public async Task Delete(OrderDelete model)
+		[HttpDelete("Cancel/{orderId}")]
+		public async Task Cancel(Guid orderId)
 		{
-			var orderToDelete = await repository.GetOrderAsync(model.OrderId);
-			await repository.DeleteAsync(orderToDelete);
+			var orderToCancel = await repository.GetOrderAsync(orderId);
+			await repository.CancelAsync(orderToCancel);
 			await repository.SaveChangesAsync();
 		}
 
-		[HttpPatch("Edit")]
-		public async Task Edit(OrderAddOrUpdate model)
+		[HttpPatch("Edit/orderId={orderId}")]
+		public async Task Edit(Guid orderId, decimal total, decimal totalTax)
 		{
-			var orderToUpdate = await repository.GetOrderAsync(model.OrderId);
-			orderToUpdate.Total = model.Total;
-			orderToUpdate.TotalTax = model.TotalTax;
+			var orderToUpdate = await repository.GetOrderAsync(orderId);
+			orderToUpdate.Total = total;
+			orderToUpdate.TotalTax = totalTax;
 			await repository.EditAsync(orderToUpdate);
 			await repository.SaveChangesAsync();
 		}

@@ -2,6 +2,7 @@
 using ItemsManager.Models;
 using Microsoft.EntityFrameworkCore;
 using OrderDetailsManager.Models;
+using OrdersManager;
 using OrdersManager.Models;
 using RestaurantManager.Data;
 using System;
@@ -37,14 +38,15 @@ namespace RestaurantManager.Services
 			context.Orders.Add(order);
 		});
 
-		public async Task DeleteAsync(Order order) => await Task.Run(() =>
+		public async Task CancelAsync(Order order) => await Task.Run(() =>
 		{
-			context.Orders.Remove(order);
+			order.Status = Status.cancelled;
+			context.Orders.Update(order);
 		});
 
 		public async Task EditAsync(Order order) => await Task.Run(() =>
 		{
-			context.Orders.Update(order).Property(o => o.OrderNumber).IsModified = false;
+			context.Orders.Update(order);
 		});
 
 		//Items

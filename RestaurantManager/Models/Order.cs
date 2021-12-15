@@ -10,9 +10,6 @@ namespace OrdersManager.Models
 		[Key]
 		public Guid OrderId { get; set; } = Guid.NewGuid();
 
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public int OrderNumber { get; set; }
-
 		public decimal Total { get; set; }
 
 		public decimal TotalTax { get; set; }

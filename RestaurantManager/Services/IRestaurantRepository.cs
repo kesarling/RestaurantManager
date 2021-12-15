@@ -20,7 +20,7 @@ namespace RestaurantManager.Services
 		Task<IList<Order>> AllOrdersAsync();
 		Task DeleteAsync(Customer customer);
 		Task DeleteAsync(Item item);
-		Task DeleteAsync(Order order);
+		Task CancelAsync(Order order);
 		Task DeleteAsync(OrderDetails orderDetails);
 		Task EditAsync(Customer customer);
 		Task EditAsync(Item item);
