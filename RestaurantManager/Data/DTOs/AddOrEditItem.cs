@@ -1,11 +1,7 @@
-﻿using System;
-
-namespace RestaurantManager.Models
+﻿namespace RestaurantManager.Data.DTOs
 {
-	public class Item
+	public class AddOrEditItem
 	{
-		public Guid ItemId { get; set; } = Guid.NewGuid();
-
 		public string Name { get; set; }
 
 		public string Description { get; set; }

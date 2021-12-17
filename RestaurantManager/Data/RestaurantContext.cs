@@ -1,8 +1,5 @@
-﻿using CustomersManager.Models;
-using ItemsManager.Models;
-using Microsoft.EntityFrameworkCore;
-using OrderDetailsManager.Models;
-using OrdersManager.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using RestaurantManager.Models;
 
 namespace RestaurantManager.Data
 {

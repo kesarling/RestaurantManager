@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CustomersManager.Models
+namespace RestaurantManager.Models
 {
 	public class Customer
 	{

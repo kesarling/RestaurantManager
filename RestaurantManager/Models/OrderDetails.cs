@@ -1,9 +1,6 @@
-﻿using CustomersManager.Models;
-using ItemsManager.Models;
-using OrdersManager.Models;
-using System;
+﻿using System;
 
-namespace OrderDetailsManager.Models
+namespace RestaurantManager.Models
 {
 	public class OrderDetails
 	{

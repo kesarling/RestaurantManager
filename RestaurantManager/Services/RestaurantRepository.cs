@@ -1,13 +1,8 @@
-﻿using CustomersManager.Models;
-using ItemsManager.Models;
-using Microsoft.EntityFrameworkCore;
-using OrderDetailsManager.Models;
-using OrdersManager;
-using OrdersManager.Models;
+﻿using Microsoft.EntityFrameworkCore;
 using RestaurantManager.Data;
+using RestaurantManager.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RestaurantManager.Services

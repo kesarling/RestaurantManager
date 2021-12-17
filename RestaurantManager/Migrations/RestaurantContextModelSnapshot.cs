@@ -59,7 +59,7 @@ namespace RestaurantManager.Migrations
                     b.ToTable("Items");
                 });
 
-            modelBuilder.Entity("OrderDetailsManager.Models.OrderDetails", b =>
+            modelBuilder.Entity("RestaurantManager.Models.OrderDetails", b =>
                 {
                     b.Property<Guid>("OrderDetailsId")
                         .ValueGeneratedOnAdd()
@@ -97,7 +97,7 @@ namespace RestaurantManager.Migrations
                     b.ToTable("OrderDetails");
                 });
 
-            modelBuilder.Entity("OrdersManager.Models.Order", b =>
+            modelBuilder.Entity("RestaurantManager.Models.Order", b =>
                 {
                     b.Property<Guid>("OrderId")
                         .ValueGeneratedOnAdd()
@@ -117,7 +117,7 @@ namespace RestaurantManager.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("OrderDetailsManager.Models.OrderDetails", b =>
+            modelBuilder.Entity("RestaurantManager.Models.OrderDetails", b =>
                 {
                     b.HasOne("CustomersManager.Models.Customer", "Customer")
                         .WithMany()
@@ -127,7 +127,7 @@ namespace RestaurantManager.Migrations
                         .WithMany()
                         .HasForeignKey("ItemId");
 
-                    b.HasOne("OrdersManager.Models.Order", "Order")
+                    b.HasOne("RestaurantManager.Models.Order", "Order")
                         .WithMany()
                         .HasForeignKey("OrderId");
 

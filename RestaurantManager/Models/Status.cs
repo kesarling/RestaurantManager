@@ -1,4 +1,4 @@
-﻿namespace OrdersManager
+﻿namespace RestaurantManager
 {
 	public enum Status
 	{

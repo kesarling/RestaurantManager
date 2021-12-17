@@ -1,7 +1,4 @@
-﻿using CustomersManager.Models;
-using ItemsManager.Models;
-using OrderDetailsManager.Models;
-using OrdersManager.Models;
+﻿using RestaurantManager.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

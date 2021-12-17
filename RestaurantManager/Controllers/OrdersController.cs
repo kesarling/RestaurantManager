@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OrdersManager.Models;
+using RestaurantManager.Models;
+using RestaurantManager.Data.DTOs;
 using RestaurantManager.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace OrdersManager.Controllers
+namespace RestaurantManager.Controllers
 {
 	[Route("[controller]")]
 	[ApiController]
@@ -24,25 +25,25 @@ namespace OrdersManager.Controllers
 			return await repository.AllOrdersAsync();
 		}
 
-		[HttpGet("/Order/{orderId}")]
+		[HttpGet("orderId={orderId}")]
 		public async Task<Order> GetOrder(Guid orderId)
 		{
 			return await repository.GetOrderAsync(orderId);
 		}
 
 		[HttpPost("Add")]
-		public async Task Add(decimal total, decimal totalTax)
+		public async Task Add(AddOrEditOrder model)
 		{
 			await repository.AddAsync(new Order
 			{
-				Total = total,
-				TotalTax = totalTax,
+				Total = model.Total,
+				TotalTax = model.TotalTax,
 				Status = Status.pending,
 			});
 			await repository.SaveChangesAsync();
 		}
 
-		[HttpDelete("Cancel/{orderId}")]
+		[HttpDelete("Cancel/orderId={orderId}")]
 		public async Task Cancel(Guid orderId)
 		{
 			var orderToCancel = await repository.GetOrderAsync(orderId);
@@ -51,11 +52,12 @@ namespace OrdersManager.Controllers
 		}
 
 		[HttpPatch("Edit/orderId={orderId}")]
-		public async Task Edit(Guid orderId, decimal total, decimal totalTax)
+		public async Task Edit(Guid orderId, AddOrEditOrder model)
 		{
 			var orderToUpdate = await repository.GetOrderAsync(orderId);
-			orderToUpdate.Total = total;
-			orderToUpdate.TotalTax = totalTax;
+			orderToUpdate.Total = model.Total;
+			orderToUpdate.TotalTax = model.TotalTax;
+			orderToUpdate.Status = model.Status;
 			await repository.EditAsync(orderToUpdate);
 			await repository.SaveChangesAsync();
 		}
